@@ -1,9 +1,11 @@
 package com.agnes;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class TodoItem {
-    static int sequencer = 0;
+    //creates fields
+    private static int sequencer =0;
     private int id;
     String title;
     String taskDescription;
@@ -84,10 +86,12 @@ public class TodoItem {
         if (creator != null)
             this.creator = creator;
     }
+
     //check if task is overdue
-    public  boolean isOverdue() {
+    public boolean isOverdue() {
         return LocalDate.now().isAfter(deadLine);
     }
+
     // Summary using StringBuilder
     public String getSummary() {
         StringBuilder summary = new StringBuilder();

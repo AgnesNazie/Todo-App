@@ -1,7 +1,8 @@
 package com.agnes;
 
 public class Person {
-    private  static int sequencer = 0;
+    //creates fields
+    private static int sequencer = 0;
     private  int id;
     private  String firstName;
     private String  lastName;
