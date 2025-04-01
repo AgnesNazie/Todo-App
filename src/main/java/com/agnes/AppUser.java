@@ -80,3 +80,9 @@ public class AppUser {
         return String.format("AppUser{username='%s', role=%s}", username, role);
     }
 }
+
+// Enum representing the roles an AppUser can have
+public enum AppRole {
+    ROLE_APP_USER, // Standard user role
+    ROLE_APP_ADMIN // Admin user role
+}
