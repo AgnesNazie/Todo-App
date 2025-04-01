@@ -43,7 +43,7 @@ public class AppUser {
 
     public void setPassword(String password) {
         if (password == null || password.trim().isEmpty())
-            throw new IllegalArgumentException("Password cannot be null or empty")
+            throw new IllegalArgumentException("Password cannot be null or empty");
         this.password = password;
     }
     //getter for role
@@ -79,10 +79,4 @@ public class AppUser {
     public String toString() {
         return String.format("AppUser{username='%s', role=%s}", username, role);
     }
-}
-
-// Enum representing the roles an AppUser can have
-public enum AppRole {
-    ROLE_APP_USER, // Standard user role
-    ROLE_APP_ADMIN // Admin user role
 }
