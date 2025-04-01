@@ -16,7 +16,7 @@ public class TodoItemTask {
         this.id = ++sequencer;
         this.assigned = (assignee != null);
         this.todoItem = todoItem;
-        this.assignee = assignee;
+        setAssignee(assignee);
     }
     // getter for id
 
@@ -50,7 +50,7 @@ public class TodoItemTask {
     public Person getAssignee() {
         return assignee;
     }
-    // setter gor assignee
+    // setter for assignee
 
     public void setAssignee(Person assignee) {
         this.assignee = assignee;

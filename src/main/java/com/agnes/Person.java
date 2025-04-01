@@ -14,7 +14,7 @@ public class Person {
         if (firstName == null || firstName.trim().isEmpty() ||
                 lastName == null || lastName.trim().isEmpty() ||
                 email == null || email.trim().isEmpty()) {
-            throw new IllegalArgumentException("Fields are required");
+            throw new IllegalArgumentException("First name, last name and email  are not allowed to be null or empty");
         }
         this.id = ++sequencer;
         this.firstName = firstName;
@@ -34,8 +34,8 @@ public class Person {
 
     //setters for firstname
     public void setFirstName(String firstName) {
-        if (firstName == null && !firstName.trim().isEmpty())
-            throw new IllegalArgumentException("First Name it not allowed to be null");
+        if (firstName == null || firstName.trim().isEmpty())
+            throw new IllegalArgumentException("First Name it not allowed to be null or empty");
         this.firstName = firstName;
     }
 
@@ -46,8 +46,8 @@ public class Person {
 
     //setters for lastname
     public void setLastName(String lastName) {
-        if (lastName == null && !firstName.trim().isEmpty())
-            throw new IllegalArgumentException("Last Name is not allowed to be null");
+        if (lastName == null || lastName.trim().isEmpty())
+            throw new IllegalArgumentException("Last Name is not allowed to be null or empty");
         this.lastName = lastName;
     }
 
@@ -58,8 +58,8 @@ public class Person {
 
     //setters for email
     public void setEmail(String email) {
-        if (email == null && !firstName.trim().isEmpty())
-            throw new IllegalArgumentException("Email is not allowed to be null");
+        if (email == null || email.trim().isEmpty())
+            throw new IllegalArgumentException("Email is not allowed to be null or empty");
         this.email = email;
     }
 

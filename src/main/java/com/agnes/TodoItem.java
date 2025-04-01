@@ -15,7 +15,7 @@ public class TodoItem {
 
     //constructor
 
-    public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
+    public TodoItem(String title, String taskDescription, LocalDate deadLine,  Person creator) {
         if (title == null || title.trim().isEmpty() ||
                 deadLine == null ||
                 creator == null) {
@@ -25,7 +25,7 @@ public class TodoItem {
         this.title = title;
         this.taskDescription = taskDescription;
         this.deadLine = deadLine;
-        this.done = false;
+        this.done = done;
         this.creator = creator;
     }
     // getters for id
@@ -41,8 +41,9 @@ public class TodoItem {
     // setters for title
 
     public void setTitle(String title) {
-        if (title != null && !title.trim().isEmpty())
-            this.title = title;
+        if (title == null || title.trim().isEmpty())
+            throw new IllegalArgumentException("Title cannot be null or empty");
+        this.title = title;
     }
     //getters for taskDescription
 
@@ -62,8 +63,10 @@ public class TodoItem {
     //setters for deadline
 
     public void setDeadLine(LocalDate deadLine) {
-        if (deadLine != null)
-            this.deadLine = deadLine;
+        if (deadLine == null || deadLine.isBefore(LocalDate.now()))
+            throw new IllegalArgumentException("Deadline cannot be null or in the past");
+
+        this.deadLine = deadLine;
     }
     // set for done
 
@@ -83,13 +86,14 @@ public class TodoItem {
     // setters for creator
 
     public void setCreator(Person creator) {
-        if (creator != null)
-            this.creator = creator;
+        if (creator == null)
+            throw new IllegalArgumentException("Creator cannot be null");
+        this.creator = creator;
     }
 
     //check if task is overdue
     public boolean isOverdue() {
-        return LocalDate.now().isAfter(deadLine);
+        return !done && LocalDate.now().isAfter(deadLine);
     }
 
     // Summary using StringBuilder
