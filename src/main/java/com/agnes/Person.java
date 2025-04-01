@@ -3,20 +3,20 @@ package com.agnes;
 public class Person {
     //creates fields
     private static int sequencer = 0;
-    private  int id;
-    private  String firstName;
-    private String  lastName;
-    private  String email;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     //create constructors for fields
 
-    public Person(String firstName,String lastName,String email) {
+    public Person(String firstName, String lastName, String email) {
         if (firstName == null || firstName.trim().isEmpty() ||
                 lastName == null || lastName.trim().isEmpty() ||
                 email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException("Fields are required");
         }
-        this.id = ++ sequencer;
+        this.id = ++sequencer;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -70,5 +70,10 @@ public class Person {
                 .append(", name: ").append(firstName).append(" ").append(lastName)
                 .append(", email: ").append(email);
         return summary.toString();
+    }
+
+    @Override
+    public String toString() {
+        return getSummary();
     }
 }

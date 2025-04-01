@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class TodoItem {
     //creates fields
-    private static int sequencer =0;
+    private static int sequencer = 0;
     private int id;
     String title;
     String taskDescription;
@@ -102,5 +102,10 @@ public class TodoItem {
                 .append(", Done: ").append(done)
                 .append(", Creator: ").append(creator.getFirstName()).append(" ").append(creator.getLastName());
         return summary.toString();
+    }
+
+    @Override
+    public String toString() {
+        return getSummary();
     }
 }
