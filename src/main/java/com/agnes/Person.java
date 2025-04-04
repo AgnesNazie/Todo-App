@@ -14,7 +14,7 @@ public class Person {
 
     //create constructors for fields
 
-    public Person(String firstName, String lastName, String email AppUser credentials) {
+    public Person(String firstName, String lastName, String email, AppUser credentials) {
         if (firstName == null || firstName.trim().isEmpty() ||
                 lastName == null || lastName.trim().isEmpty() ||
                 email == null || email.trim().isEmpty()) {
