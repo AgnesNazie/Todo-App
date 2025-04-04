@@ -19,19 +19,53 @@ public class Main{
 
         // Creating a TodoItemTask object
         TodoItemTask todoTask = new TodoItemTask(task, assignee);
+        System.out.println("==================================================");
 
         // Printing the summary
         System.out.println(todoTask);
+        System.out.println("==================================================");
 
         // Changing assignee to null
         todoTask.setAssignee(null);
         System.out.println("After removing assignee: " + todoTask);
+        System.out.println("==================================================");
 
         // Testing validation
         try {
             todoTask.setTodoItem(null);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
+            System.out.println("==================================================");
+        }
+        //  Check credential linkage
+        System.out.println("Creator username: " + creator.getCredentials().getUsername());
+        System.out.println("==================================================");
+
+        // Test equals() and hashCode()
+        Person p1 = new Person("Agnes", "Nazie", "agnes@example.com", creatorCredentials);
+        Person p2 = new Person("Agnes", "Nazie", "agnes@example.com", creatorCredentials);
+        System.out.println("Are persons equal? " + p1.equals(p2));
+        System.out.println("==================================================");
+
+        // Overdue task test
+        TodoItem oldTask = new TodoItem("Missed Task", "This is late", LocalDate.now().minusDays(2), creator);
+        System.out.println("Is overdue? " + oldTask.isOverdue());
+        System.out.println("==================================================");
+
+        // Invalid Person test
+        try {
+            Person invalidPerson = new Person("", "", "", creatorCredentials);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid person test: " + e.getMessage());
+            System.out.println("==================================================");
+        }
+
+         // Invalid title test
+        try {
+            task.setTitle("");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid title test: " + e.getMessage());
+            System.out.println("==================================================");
         }
 
     }
