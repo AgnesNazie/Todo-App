@@ -1,5 +1,7 @@
 package com.agnes;
 
+import java.util.Objects;
+
 public class Person {
     //creates fields
     private static int sequencer = 0;
@@ -7,10 +9,12 @@ public class Person {
     private String firstName;
     private String lastName;
     private String email;
+    // New field to store the credentials (AppUser)
+    private AppUser credentials;
 
     //create constructors for fields
 
-    public Person(String firstName, String lastName, String email) {
+    public Person(String firstName, String lastName, String email AppUser credentials) {
         if (firstName == null || firstName.trim().isEmpty() ||
                 lastName == null || lastName.trim().isEmpty() ||
                 email == null || email.trim().isEmpty()) {
@@ -20,6 +24,7 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.credentials = credentials;
     }
 
     // getters  for Id
@@ -62,18 +67,39 @@ public class Person {
             throw new IllegalArgumentException("Email is not allowed to be null or empty");
         this.email = email;
     }
+    //getter for credentials
 
-    // Method to get a summary of the Person object using StringBuilder
-    public String getSummary() {
-        StringBuilder summary = new StringBuilder();
-        summary.append("id: ").append(id)
-                .append(", name: ").append(firstName).append(" ").append(lastName)
-                .append(", email: ").append(email);
-        return summary.toString();
+
+    public AppUser getCredentials() {
+        return credentials;
+    }
+    //setters for credentials
+
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
     }
 
+    // Overriding the toString() method to exclude credentials
     @Override
     public String toString() {
-        return getSummary();
+        return String.format("Person{id=%d, firstName='%s', lastName='%s', email='%s'}", id, firstName, lastName, email);
+    }
+    // Overriding equals() and hashCode() to exclude credentials
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return id == person.id &&
+                Objects.equals(firstName, person.firstName) &&
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(email, person.email);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email);
     }
 }
+
+
