@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Person {
     //creates fields
     private static int sequencer = 0;
-    private int id;
+    private final int id;
     private String firstName;
     private String lastName;
     private String email;

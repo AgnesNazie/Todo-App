@@ -2,12 +2,11 @@ package com.agnes;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 public class TodoItem {
     //creates fields
     private static int sequencer = 0;
-    private int id;
+    private final int id;
     String title;
     String taskDescription;
     LocalDate deadLine;

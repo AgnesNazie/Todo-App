@@ -5,7 +5,7 @@ import java.util.Objects;
 public class TodoItemTask {
     //creates fields
     private static int sequencer = 0;
-    private int id;
+    private final int id;
     private boolean assigned;
     private TodoItem todoItem;
     private Person assignee;
