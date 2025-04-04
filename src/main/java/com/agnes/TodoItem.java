@@ -1,6 +1,7 @@
 package com.agnes;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 
 public class TodoItem {
@@ -15,7 +16,7 @@ public class TodoItem {
 
     //constructor
 
-    public TodoItem(String title, String taskDescription, LocalDate deadLine,  Person creator) {
+    public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator) {
         if (title == null || title.trim().isEmpty() ||
                 deadLine == null ||
                 creator == null) {
@@ -96,20 +97,29 @@ public class TodoItem {
         return !done && LocalDate.now().isAfter(deadLine);
     }
 
-    // Summary using StringBuilder
-    public String getSummary() {
-        StringBuilder summary = new StringBuilder();
-        summary.append("ID: ").append(id)
-                .append(", Title: ").append(title)
-                .append(", Description: ").append(taskDescription)
-                .append(", Deadline: ").append(deadLine)
-                .append(", Done: ").append(done)
-                .append(", Creator: ").append(creator.getFirstName()).append(" ").append(creator.getLastName());
-        return summary.toString();
-    }
-
+    // Override toString to represent all fields except Person object(s)
     @Override
     public String toString() {
-        return getSummary();
+        return String.format("TodoItem{id=%d, title='%s', description='%s', deadline=%s, done=%b}",
+                id, title, taskDescription, deadLine, done);
+    }
+
+    // Override equals to compare all fields except the Person object (creator)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        TodoItem todoItem = (TodoItem) obj;
+        return done == todoItem.done &&
+                id == todoItem.id &&
+                Objects.equals(title, todoItem.title) &&
+                Objects.equals(taskDescription, todoItem.taskDescription) &&
+                Objects.equals(deadLine, todoItem.deadLine);
+    }
+
+    // Override hashCode to exclude the Person object (creator)
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, taskDescription, deadLine, done);
     }
 }
