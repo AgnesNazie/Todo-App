@@ -48,7 +48,7 @@ public class Main{
         System.out.println("==================================================");
 
         // Overdue task test
-        TodoItem oldTask = new TodoItem("Missed Task", "This is late", LocalDate.now().minusDays(2), creator);
+        TodoItem oldTask = new TodoItem("Almost Missed Task", "This is still ok", LocalDate.now().plusDays(1), creator);
         System.out.println("Is overdue? " + oldTask.isOverdue());
         System.out.println("==================================================");
 

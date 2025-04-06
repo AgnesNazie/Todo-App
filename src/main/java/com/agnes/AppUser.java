@@ -10,17 +10,10 @@ public class AppUser {
     //constructors
 
     public AppUser(String username, String password, AppRole role) {
-        if (username == null || username.trim().isEmpty()) {
-            throw new IllegalArgumentException("Username cannot be null or empty");
-        }
-        if (password == null || password.trim().isEmpty()) {
-            throw new IllegalArgumentException("password cannot be null or empty");
-        }
-        if (role == null)
-            throw new IllegalArgumentException("Role cannot be null");
-        this.username = username;
-        this.password = password;
-        this.role = role;
+
+        setUserName(username);
+        setPassword(password);
+        setRole(role);
     }
     //getter for username
 

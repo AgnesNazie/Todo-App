@@ -16,17 +16,13 @@ public class TodoItem {
     //constructor
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator) {
-        if (title == null || title.trim().isEmpty() ||
-                deadLine == null ||
-                creator == null) {
-            throw new IllegalArgumentException("Fields are required");
-        }
+
         this.id = ++sequencer;
-        this.title = title;
+        setTitle(title);
+        setDeadLine(deadLine);
         this.taskDescription = taskDescription;
-        this.deadLine = deadLine;
         this.done = done;
-        this.creator = creator;
+        setCreator(creator);
     }
     // getters for id
 

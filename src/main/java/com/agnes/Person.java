@@ -15,15 +15,11 @@ public class Person {
     //create constructors for fields
 
     public Person(String firstName, String lastName, String email, AppUser credentials) {
-        if (firstName == null || firstName.trim().isEmpty() ||
-                lastName == null || lastName.trim().isEmpty() ||
-                email == null || email.trim().isEmpty()) {
-            throw new IllegalArgumentException("First name, last name and email  are not allowed to be null or empty");
-        }
+
         this.id = ++sequencer;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
         this.credentials = credentials;
     }
 

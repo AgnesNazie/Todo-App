@@ -13,11 +13,9 @@ public class TodoItemTask {
     //constructor
 
     public TodoItemTask(TodoItem todoItem, Person assignee) {
-        if (todoItem == null)
-            throw new RuntimeException("TodoItem cannot be null");
         this.id = ++sequencer;
         this.assigned = (assignee != null);
-        this.todoItem = todoItem;
+        setTodoItem(todoItem);
         setAssignee(assignee);
     }
     // getter for id
