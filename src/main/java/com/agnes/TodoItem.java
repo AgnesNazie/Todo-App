@@ -2,6 +2,7 @@ package com.agnes;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 public class TodoItem {
     //creates fields
@@ -15,12 +16,11 @@ public class TodoItem {
 
     //constructor
 
-    public TodoItem(String title, String taskDescription, LocalDate deadLine, Person creator) {
-
-        this.id = ++sequencer;
+    public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
+        this.id = ++ sequencer;
         setTitle(title);
-        setDeadLine(deadLine);
         this.taskDescription = taskDescription;
+        setDeadLine(deadLine);
         this.done = done;
         setCreator(creator);
     }
